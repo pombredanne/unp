@@ -266,7 +266,7 @@ tar_stream_processor = StreamProcessor(
 class TarUnpacker(Unpacker):
     id = 'tar'
     name = 'Uncompressed Tarballs'
-    filename_patterns = ['*.tar']
+    filename_patterns = ['*.tar', '*.gem']
     executable = 'tar'
     args = ['xvf', FILENAME]
     stream_processor = tar_stream_processor
@@ -287,7 +287,7 @@ class TarGzUnpacker(Unpacker):
 class TarBz2Unpacker(Unpacker):
     id = 'tbz2'
     name = 'Bz2 Compressed Tarballs'
-    filename_patterns = ['*.tar.bz2']
+    filename_patterns = ['*.tar.bz2', '*.tbz']
     executable = 'tar'
     args = ['xvjf', FILENAME]
     stream_processor = tar_stream_processor
@@ -297,7 +297,7 @@ class TarBz2Unpacker(Unpacker):
 class TarXZUnpacker(UnpackerBase):
     id = 'txz'
     name = 'XZ Compressed Tarballs'
-    filename_patterns = ['*.tar.xz']
+    filename_patterns = ['*.tar.xz', '*.txz']
     executable = 'unxz'
     args = ['-c', FILENAME]
     brew_package = 'xz'
@@ -357,7 +357,7 @@ class XZUnpacker(SingleInplaceUnpacker):
 class ZipUnpacker(Unpacker):
     id = 'zip'
     name = 'Zip Archives'
-    filename_patterns = ['*.zip', '*.egg', '*.whl', '*.jar']
+    filename_patterns = ['*.zip', '*.egg', '*.whl', '*.jar', '*.war', '*.ear', '*.sar']
     executable = 'unzip'
     args = [FILENAME]
     mimetypes = ['application/zip']
@@ -416,7 +416,7 @@ class CabUnpacker(Unpacker):
 class ArUnpacker(Unpacker):
     id = 'ar'
     name = 'AR Archives'
-    filename_patterns = ['*.a']
+    filename_patterns = ['*.a', '*.deb']
     executable = 'ar'
     args = ['-vx', FILENAME]
     mimetypes = ['application/x-archive']
